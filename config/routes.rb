@@ -6,5 +6,8 @@ Rails.application.routes.draw do
   resources :roles
   resources :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  root to: 'users#index'
+  authenticated :user do
+    root to: 'users#index', as: :authenticated_root
+  end
+  root to: 'welcome#index'
 end
