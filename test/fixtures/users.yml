@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  role: one
+  DOB: 2021-08-05
+
+two:
+  name: MyString
+  role: two
+  DOB: 2021-08-05
