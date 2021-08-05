@@ -7,7 +7,7 @@
     <tr>
       <th>Name</th>
       <th>Role</th>
-      <th>Dob</th>
+      <th>DOB</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,6 +16,7 @@
     <% @users.each do |user| %>
       <tr>
         <td><%= user.name %></td>
+        <td><%= user.email %></td>
         <td><%= user.role.name %></td>
         <td><%= user.DOB %></td>
         <td><%= link_to 'Show', user %></td>
