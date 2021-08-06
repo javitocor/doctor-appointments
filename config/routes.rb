@@ -2,10 +2,10 @@ Rails.application.routes.draw do
   devise_for :users
   scope '/admin' do
     resources :users
+    resources :roles
   end
-  resources :roles
+  
   resources :users
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   authenticated :user do
     root to: 'users#index', as: :authenticated_root
   end
