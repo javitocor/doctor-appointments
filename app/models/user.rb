@@ -11,7 +11,6 @@ class User < ApplicationRecord
   
   before_save :assign_role
   
-  mount_uploaders :user_image, UserImageUploader
     
   def admin?
     role.name == 'Admin'

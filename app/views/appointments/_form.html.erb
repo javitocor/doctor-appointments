@@ -31,6 +31,23 @@
     <%= collection_select(:appointment, :doctor_user_id, User.where("role_id = ?", 1), :id, :name, { prompt: true }) %>
   </div>
 
+  <p>Add 3 photos so we can create a Crisalix 3d</p>
+  
+  <% appointment.user_image.each do |user_image| %>
+    <%= hidden_field :appointments, :user_image, multiple: true, value: user_image.identifier %>
+  <% end %>
+  <%= form.file_field :user_image, multiple: true %>
+
+  <% appointment.user_image.each do |user_image| %>
+    <%= hidden_field :appointments, :user_image, multiple: true, value: user_image.identifier %>
+  <% end %>
+  <%= form.file_field :user_image, multiple: true %>
+
+  <% appointment.user_image.each do |user_image| %>
+    <%= hidden_field :appointments, :user_image, multiple: true, value: user_image.identifier %>
+  <% end %>
+  <%= form.file_field :user_image, multiple: true %>
+
   <div class="actions">
     <%= form.submit %>
   </div>

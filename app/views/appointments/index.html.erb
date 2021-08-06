@@ -4,7 +4,9 @@
 <table>
   <thead>
     <tr>
+    <% if current_user.admin? || current_user.doctor? %>
       <th>Patient</th>
+    <% end %>
       <th>Subject</th>
       <th>Starts at</th>
       <th>Ends at</th>
@@ -16,14 +18,16 @@
   <tbody>
     <% @appointments.each do |appointment| %>
       <tr>
+      <% if current_user.admin? || current_user.doctor? %>
         <td><%= appointment.patient_user.name %></td>
+      <% end %>
         <td><%= appointment.subject %></td>
         <td><%= appointment.start_at %></td>
         <td><%= appointment.end_at %></td>
         <td><%= appointment.doctor_user.name %></td>
         <td><%= link_to 'Show', appointment %></td>
         <td><%= link_to 'Edit', edit_appointment_path(appointment) %></td>
-        <td><%= link_to 'Destroy', appointment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Cancel', appointment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

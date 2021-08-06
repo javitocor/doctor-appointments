@@ -57,7 +57,7 @@ class AppointmentsController < ApplicationController
   def destroy
     @appointment.destroy
     respond_to do |format|
-      format.html { redirect_to appointments_url, notice: "Appointment was successfully destroyed." }
+      format.html { redirect_to appointments_url, notice: "Appointment was successfully cancelled." }
       format.json { head :no_content }
     end
   end
@@ -69,7 +69,8 @@ class AppointmentsController < ApplicationController
         :start_at,
         :end_at,
         :doctor_user_id,
-        :patient_user_id
+        :patient_user_id,
+        {user_image: []}
       )
     end
 end

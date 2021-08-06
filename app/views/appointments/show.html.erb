@@ -24,7 +24,12 @@
     <strong>Patient:</strong>
     <%= @appointment.patient_user.name %>
   </p>
+  <p><strong>DOB:</strong><%= @appointment.patient_user.DOB %></p>
 <%end%>
+
+<% @appointment.user_image.each do |user_image| %>
+  <%= image_tag user_image.url%>
+<% end %>
 
 <%= link_to 'Edit', edit_appointment_path(@appointment) %> |
 <%= link_to 'Back', appointments_path %>

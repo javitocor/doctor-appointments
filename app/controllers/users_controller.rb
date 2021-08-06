@@ -63,7 +63,7 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to users_url, notice: "User was successfully destroyed." }
+      format.html { redirect_to users_url, notice: "User was successfully deleted." }
       format.json { head :no_content }
     end
   end
@@ -77,8 +77,7 @@ class UsersController < ApplicationController
         :password_confirmation,
         :name,
         :DOB,
-        :role_id,
-        {user_image: []}
+        :role_id
       )
     end
 

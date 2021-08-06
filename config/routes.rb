@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :appointments
   resources :users
   authenticated :user do
-    root to: 'users#index', as: :authenticated_root
+    root to: 'appointments#index', as: :authenticated_root
   end
   root to: 'welcome#index'
 end
