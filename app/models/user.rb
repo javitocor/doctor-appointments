@@ -11,8 +11,7 @@ class User < ApplicationRecord
   
   before_save :assign_role
   
-  #scope :doctor_user, -> {where("role_id = ?", 1)
-  #scope :patient_user, -> {where("role_id = ?", 2)
+  mount_uploaders :user_image, UserImageUploader
     
   def admin?
     role.name == 'Admin'

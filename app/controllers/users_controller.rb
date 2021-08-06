@@ -77,7 +77,8 @@ class UsersController < ApplicationController
         :password_confirmation,
         :name,
         :DOB,
-        :role_id
+        :role_id,
+        {user_image: []}
       )
     end
 
