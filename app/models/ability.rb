@@ -7,7 +7,11 @@ class Ability
     if user.admin?
       can :manage, :all
     elsif user.patient?
-      can :read, User
+      cannot :read, Role
+      can :index, User
+      can :show, User do |user|
+        user.role_id == 1
+      end
       can :read, Appointment
       can :create, Appointment
       can :update, Appointment do |appointment|
@@ -17,7 +21,11 @@ class Ability
         appointment.try(:user) == user
       end
     elsif user.doctor?
-      can :read, User
+      cannot :read, Role
+      can :index, User
+      can :show, User do |user|
+        user.role_id == 1 || user.role_id == 2
+      end
       can :read, Appointment
       can :destroy, Appointment do |appointment|
         appointment.try(:user) == user
