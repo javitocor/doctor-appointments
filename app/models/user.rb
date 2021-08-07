@@ -10,7 +10,9 @@ class User < ApplicationRecord
   has_many :patient_user_appointments, class_name: 'Appointment', foreign_key: 'patient_user_id', dependent: :destroy
   
   before_save :assign_role
-  
+  def self.search(search)  
+    where("lower(users.name) LIKE :search AND  users.role_id LIKE 1", search: "%#{search.downcase}%") 
+  end
     
   def admin?
     role.name == 'Admin'
