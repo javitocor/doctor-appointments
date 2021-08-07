@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   validates :email, presence: true
-  validates :name, :DOB, presence: true
+  validates :DOB, presence: true
   validates :name, presence: true, length: { maximum: 20, too_long: '20 characters in user name is the maximum allowed.'  }, :on => :create
   
   belongs_to :role, optional: true
