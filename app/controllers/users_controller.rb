@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
   load_and_authorize_resource
 
-  # GET /users or /users.json
+  # GET /users
   def index
     if current_user.admin?
       @users = User.all
@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     end
   end
 
-  # GET /users/1 or /users/1.json
+  # GET /users/1
   def show
   end
 
@@ -25,21 +25,19 @@ class UsersController < ApplicationController
   def edit
   end
 
-  # POST /users or /users.json
+  # POST /users
   def create
 
     respond_to do |format|
       if @user.save
         format.html { redirect_to @user, notice: "User was successfully created." }
-        format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # PATCH/PUT /users/1 or /users/1.json
+  # PATCH/PUT /users/1
   def update
     if user_params[:password].blank?
       user_params.delete(:password)
@@ -59,12 +57,11 @@ class UsersController < ApplicationController
     end
   end
 
-  # DELETE /users/1 or /users/1.json
+  # DELETE /users/1
   def destroy
     @user.destroy
     respond_to do |format|
       format.html { redirect_to users_url, notice: "User was successfully deleted." }
-      format.json { head :no_content }
     end
   end
 

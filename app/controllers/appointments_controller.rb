@@ -2,7 +2,7 @@ class AppointmentsController < ApplicationController
   before_action :authenticate_user!
   load_and_authorize_resource
 
-  # GET /appointments or /appointments.json
+  # GET /appointments
   def index
     if current_user.admin?
       @appointments = Appointment.all
@@ -13,7 +13,7 @@ class AppointmentsController < ApplicationController
     end
   end
 
-  # GET /appointments/1 or /appointments/1.json
+  # GET /appointments/1
   def show
   end
 
@@ -25,7 +25,7 @@ class AppointmentsController < ApplicationController
   def edit
   end
 
-  # POST /appointments or /appointments.json
+  # POST /appointments
   def create    
     @appointment.patient_user_id = current_user.id
     @appointment.end_at = DateTime.parse(params[:appointment][:start_at]) + 1.hour
@@ -33,33 +33,28 @@ class AppointmentsController < ApplicationController
     respond_to do |format|
       if @appointment.save
         format.html { redirect_to @appointment, notice: "Appointment was successfully created." }
-        format.json { render :show, status: :created, location: @appointment }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @appointment.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # PATCH/PUT /appointments/1 or /appointments/1.json
+  # PATCH/PUT /appointments/1
   def update
     respond_to do |format|
       if @appointment.update(appointment_params)
         format.html { redirect_to @appointment, notice: "Appointment was successfully updated." }
-        format.json { render :show, status: :ok, location: @appointment }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @appointment.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # DELETE /appointments/1 or /appointments/1.json
+  # DELETE /appointments/1
   def destroy
     @appointment.destroy
     respond_to do |format|
       format.html { redirect_to appointments_url, notice: "Appointment was successfully cancelled." }
-      format.json { head :no_content }
     end
   end
 

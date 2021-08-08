@@ -2,12 +2,12 @@ class RolesController < ApplicationController
   before_action :authenticate_user!
   load_and_authorize_resource
 
-  # GET /roles or /roles.json
+  # GET /roles
   def index
     @roles = Role.all
   end
 
-  # GET /roles/1 or /roles/1.json
+  # GET /roles/1
   def show
     if @role.users.empty?
       @assosciated_user = 'None'
@@ -24,39 +24,34 @@ class RolesController < ApplicationController
   def edit
   end
 
-  # POST /roles or /roles.json
+  # POST /roles
   def create
 
     respond_to do |format|
       if @role.save
         format.html { redirect_to @role, notice: "Role was successfully created." }
-        format.json { render :show, status: :created, location: @role }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @role.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # PATCH/PUT /roles/1 or /roles/1.json
+  # PATCH/PUT /roles/1
   def update
     respond_to do |format|
       if @role.update(role_params)
         format.html { redirect_to @role, notice: "Role was successfully updated." }
-        format.json { render :show, status: :ok, location: @role }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @role.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # DELETE /roles/1 or /roles/1.json
+  # DELETE /roles/1
   def destroy
     @role.destroy
     respond_to do |format|
       format.html { redirect_to roles_url, notice: "Role was successfully deleted." }
-      format.json { head :no_content }
     end
   end
 
