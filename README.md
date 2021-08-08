@@ -57,6 +57,7 @@ Additional description about the project and its features.
 - RUBY v2.6.5
 - RUBY ON RAILS v5.2.4
 - DEVISE
+- CANCANCAN
 - CARRIERWAVE
 - GITHUB ACTIONS
 - VSCODE
