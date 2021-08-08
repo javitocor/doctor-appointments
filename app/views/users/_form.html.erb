@@ -10,33 +10,21 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+  <div class="form-outline mb-3">
+    <%= form.text_field :name, autofocus: true, placeholder: "Name", class:"form-control form-control-lg" %>                                      
   </div>
-
-  <div class="field">
-    <%= form.label :DOB %>
-    <%= form.date_field :DOB %>
+  <div class="form-outline mb-3">
+    <%= form.email_field :email, autofocus: true, placeholder: "Email", class:"form-control form-control-lg" %>                                      
   </div>
-
-  <div class="field">
-    <%= form.label :email %><br>
-    <%= form.text_field :email %>
+  <div class="form-outline mb-3">    
+    <%= form.label :DOB, "Date of birth", class:"fw-bold " %>
+    <%= form.date_field :DOB, autofocus: true, class:"form-control form-control-lg" %>                                      
   </div>
-
-  <div class="field">
-    <%= form.label :role_id %>
-    <%= collection_select(:user, :role_id, Role.all, :id, :name, { prompt: true }) %>
+  <div class="form-outline mb-3">
+    <%= collection_select(:user, :role_id, Role.all, :id, :name, { prompt: "--Select a role--" }, class:"form-select form-select-lg") %>                                     
   </div>
-
-  <div class="field">
-    <%= form.label :password %><br>
-    <%= form.password_field :password, placeholder: "Leave blank if unchanged" %>
+  <div class="form-outline mb-3">
+    <%= form.password_field :password, placeholder: "Password", class:"form-control form-control-lg" %>                    
   </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+  <%= form.submit "Submit", class:"btn btn-primary btn-lg btn-rounded text-white px-5" %>                  
+ <% end %>

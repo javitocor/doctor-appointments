@@ -11,24 +11,16 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :subject %>
-    <%= form.text_field :subject %>
+  <div class="form-outline mb-3">
+    <%= form.text_field :subject, autofocus: true, placeholder: "Subject", class:"form-control form-control-lg" %>                                      
   </div>
 
-  <div class="field">
-    <%= form.label :start_at %>
-    <%= form.datetime_field :start_at %>
+  <div class="form-outline mb-3">
+    <%= form.datetime_field :start_at, autofocus: true, class:"form-control form-control-lg" %>                                      
   </div>
 
-  <div class="field">
-    <%= form.label :end_at %>
-    <%= form.datetime_field :end_at %>
-  </div>
-
-  <div class="field">
-    <%= form.label :doctor %>
-    <%= collection_select(:appointment, :doctor_user_id, User.where("role_id = ?", 1), :id, :name, { prompt: true }) %>
+  <div class="form-outline mb-3 form-group">
+    <%= collection_select(:appointment, :doctor_user_id, User.where("role_id = ?", 1), :id, :name, { prompt: "--Select a Doctor--" }, class:"form-select form-select-lg") %>                                    
   </div>
 
   <p>Add 3 photos so we can create a Crisalix 3d</p>
@@ -49,6 +41,6 @@
   <%= form.file_field :user_image, multiple: true %>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Submit', class:"btn btn-primary btn-lg btn-rounded text-white mt-1" %>
   </div>
 <% end %>

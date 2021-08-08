@@ -1,40 +1,43 @@
+<div class="container mt-3">
+  <h1>Appointments</h1>
 
-<h1>Appointments</h1>
-
-<table>
-  <thead>
-    <tr>
-    <% if current_user.admin? || current_user.doctor? %>
-      <th>Patient</th>
-    <% end %>
-      <th>Subject</th>
-      <th>Starts at</th>
-      <th>Ends at</th>
-      <th>Doctor</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @appointments.each do |appointment| %>
+  <table class="table table-hover">
+    <thead>
       <tr>
       <% if current_user.admin? || current_user.doctor? %>
-        <td><%= appointment.patient_user.name %></td>
+        <th>Patient</th>
       <% end %>
-        <td><%= appointment.subject %></td>
-        <td><%= appointment.start_at %></td>
-        <td><%= appointment.end_at %></td>
-        <td><%= appointment.doctor_user.name %></td>
-        <td><%= link_to 'Show', appointment %></td>
-        <td><%= link_to 'Edit', edit_appointment_path(appointment) %></td>
-        <td><%= link_to 'Cancel', appointment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th scope="col">Subject</th>
+        <th scope="col">Starts at</th>
+        <th scope="col">Ends at</th>
+        <th scope="col">Doctor</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
+    <tbody>
+      <% @appointments.each do |appointment| %>
+        <tr>
+        <% if current_user.admin? || current_user.doctor? %>
+          <td><%= appointment.patient_user.name %></td>
+        <% end %>
+          <td><%= appointment.subject %></td>
+          <td><%= appointment.start_at %></td>
+          <td><%= appointment.end_at %></td>
+          <td><%= appointment.doctor_user.name %></td>
+          <td><%= link_to 'Show', appointment, class:"btn btn-primary text-white" %></td>
+          <% if current_user.patient? || current_user.admin? %>
+            <td><%= link_to 'Edit', edit_appointment_path(appointment), class:"btn btn-primary text-white" %></td>
+          <% end %>
+          <td><%= link_to 'Cancel', appointment, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-primary text-white" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<% if can? :create, Appointment %>
-  <%= link_to 'New Appointment', new_appointment_path %>
-<% end %>
+  <br>
+
+  <% if can? :create, Appointment %>
+    <%= link_to 'New Appointment', new_appointment_path, class:"btn btn-primary btn-lg text-white" %>
+  <% end %>
+</div>

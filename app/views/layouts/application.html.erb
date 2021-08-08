@@ -8,37 +8,21 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/d4de0f4540.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
   </head>
 
   <body>
-    <div class="flex-container">
-      <header>
-        <% if user_signed_in? %>
-          Signed in as <%= current_user.email %>.<br>
-          Not you?
-          <%= link_to "Edit profile", edit_user_registration_path %>
-          <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-        <% else %>
-          <%= link_to "Sign up", new_user_registration_path %> or
-          <%= link_to "sign in", new_user_session_path %>
-        <% end %>
+    <div class="container-fluid p-0 intro">
+      <div class="row m-0 intro">
+          <%= render 'layouts/navbar'%>
 
-        <nav>
-          <% if @current_user&.admin? %>
-            <%= link_to "Users", users_path %> |
-            <%= link_to "Roles", roles_path %>
-          <% end %>
-        </nav>
-      </header>
-
-      <% flash.each do |name, msg| %>
-        <%= content_tag :div, msg, id: "flash_#{name}" %>
-      <% end %>
-
-      <main>
-        <%= yield %>
-      </main>
+          <div class="container col-md-10 col-sm-8 intro">
+            <div class="row intro">
+              <%= yield %>
+            </div>
+          </div>
+      </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
   </body>

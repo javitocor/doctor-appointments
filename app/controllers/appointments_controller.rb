@@ -28,7 +28,8 @@ class AppointmentsController < ApplicationController
   # POST /appointments or /appointments.json
   def create    
     @appointment.patient_user_id = current_user.id
-
+    @appointment.end_at = DateTime.parse(params[:appointment][:start_at]) + 1.hour
+    
     respond_to do |format|
       if @appointment.save
         format.html { redirect_to @appointment, notice: "Appointment was successfully created." }

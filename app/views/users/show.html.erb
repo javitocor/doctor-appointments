@@ -1,23 +1,45 @@
-
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
-
-<p>
-  <strong>Role:</strong>
-  <%= @user.role.name %>
-</p>
-
-<p>
-  <strong>Dob:</strong>
-  <%= @user.DOB %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<section class="container">
+  <% if current_user.doctor? %>
+    <h1 class="mb-4">Patient: <%= @user.name %></h1> 
+  <% elsif current_user.patient? %> 
+    <h1 class="mb-4">Doctor: <%= @user.name %></h1> 
+  <% else %>
+    <h1 class="mb-4">User: <%= @user.name %></h1> 
+  <% end %>
+  <div class="row d-flex justify-content-center">
+    <div class="list-group w-50 mb-3">
+      <div class="list-group-item list-group-item-action">
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1">Name</h5>
+        </div>
+        <p class="mb-1"><%= @user.name %></p>
+        
+      </div>
+      <div class="list-group-item list-group-item-action">
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1">DOB</h5>      
+        </div>
+        <p class="mb-1"><%= @user.DOB %></p>    
+      </div>
+      <div class="list-group-item list-group-item-action">
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1">Email</h5>      
+        </div>
+        <p class="mb-1"><%= @user.email %></p>    
+      </div>
+      <div class="list-group-item list-group-item-action">
+        <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">Role</h5>      
+          </div>
+          <p class="mb-1"><%= @user.role.name %></p>    
+        </div>  
+      </div>
+    </div>    
+    <div class="mt-4 mb-3 d-flex justify-content-center">
+      <% if current_user.admin? %>
+        <%= link_to 'Edit', edit_user_path(@user), class:"btn btn-primary text-white mx-2" %> 
+      <% end %>
+      <%= link_to 'Back', users_path, class:"btn btn-primary text-white" %>
+    </div>
+  </div>
+</section>

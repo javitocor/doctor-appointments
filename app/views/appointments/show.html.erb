@@ -1,35 +1,69 @@
-<p>
-  <strong>Subject:</strong>
-  <%= @appointment.subject %>
-</p>
+<section class="container">
+  <% if current_user.patient? %>
+    <h1 class="mb-4">Appointment with: <%= @appointment.doctor_user.name %></h1>
+  <% elsif current_user.doctor? %>
+    <h1 class="mb-4">Appointment with: <%= @appointment.patient_user.name %></h1>
+  <% end %>
+  <div class="row d-flex justify-content-center">
+    <div class="list-group w-50 mb-3">
+      <div class="list-group-item list-group-item-action">
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1">Subject</h5>
+        </div>
+        <p class="mb-1"><%= @appointment.subject %></p>
+        
+      </div>
+      <div class="list-group-item list-group-item-action">
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1">Starts at</h5>      
+        </div>
+        <p class="mb-1"><%= @appointment.start_at %></p>    
+      </div>
+      <div class="list-group-item list-group-item-action">
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1">Ends at</h5>      
+        </div>
+        <p class="mb-1"><%= @appointment.end_at %></p>    
+      </div>
+      <div class="list-group-item list-group-item-action">
+        <% if current_user.patient? %>
+          <div class="d-flex w-100 justify-content-between">
+              <h5 class="mb-1">Doctor</h5>      
+            </div>
+            <p class="mb-1"><%= @appointment.doctor_user.name %></p>    
+          </div>
+        <% elsif current_user.doctor? %>
+          <div class="d-flex w-100 justify-content-between">
+              <h5 class="mb-1">Doctor</h5>      
+            </div>
+            <p class="mb-1"><%= @appointment.patient_user.name %></p>    
+          </div>
+        <% end %>    
+      </div>
+    </div>
 
-<p>
-  <strong>Starts at:</strong>
-  <%= @appointment.start_at %>
-</p>
-
-<p>
-  <strong>Ends at:</strong>
-  <%= @appointment.end_at %>
-</p>
-<% if current_user.patient? %>
-  <p>
-    <strong>Doctor:</strong>
-    <%= @appointment.doctor_user.name %>
-  </p>
-<%end%>
-
-<% if current_user.doctor? %>
-  <p>
-    <strong>Patient:</strong>
-    <%= @appointment.patient_user.name %>
-  </p>
-  <p><strong>DOB:</strong><%= @appointment.patient_user.DOB %></p>
-<%end%>
-
-<% @appointment.user_image.each do |user_image| %>
-  <%= image_tag user_image.url%>
-<% end %>
-
-<%= link_to 'Edit', edit_appointment_path(@appointment) %> |
-<%= link_to 'Back', appointments_path %>
+    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner">
+        <% @appointment.user_image.each do |user_image| %>
+          <div class="carousel-item active">
+            <%= image_tag user_image.url, class:"d-block w-100"%>
+          </div>       
+        <% end %>   
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+    <div class="mt-4 mb-3 d-flex justify-content-center">
+      <% if current_user.patient? || current_user.admin? %>
+        <%= link_to 'Edit', edit_appointment_path(@appointment), class:"btn btn-primary text-white mx-2" %> 
+      <% end %>
+      <%= link_to 'Back', appointments_path, class:"btn btn-primary text-white" %>
+    </div>
+  </div>
+</section>

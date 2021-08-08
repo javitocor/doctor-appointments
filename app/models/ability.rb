@@ -14,11 +14,12 @@ class Ability
       end
       can :read, Appointment
       can :create, Appointment
+      can :edit, Appointment
       can :update, Appointment do |appointment|
         appointment.try(:user) == user
       end
       can :destroy, Appointment do |appointment|
-        appointment.try(:user) == user
+        appointment.try(:patient_user) == user
       end
     elsif user.doctor?
       cannot :read, Role
@@ -28,7 +29,7 @@ class Ability
       end
       can :read, Appointment
       can :destroy, Appointment do |appointment|
-        appointment.try(:user) == user
+        appointment.try(:doctor_user) == user
       end
     end
   end
