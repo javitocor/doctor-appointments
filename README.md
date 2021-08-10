@@ -24,28 +24,9 @@ Things you may want to c<!--
 [![Issues][issues-shield]][issues-url] 
 ![Hireable](https://cdn.rawgit.com/hiendv/hireable/master/styles/default/yes.svg) 
 
-# Plastic Surgery Appointments App
+# Doctor Appointments App
 
->  A webApp that allows the user sing up or log in as a patient and book appointments with a doctor. The app is based in 3 models, User, Role and Appointments. Only an Admin user can create Doctor users, by default users sign up as patients. To book an appointment the patient must send 3 photos to the Doctor to create a 3d image. Built with Ruby on Rails.
-
-
-Landing Page:
-![screenshot](./app/assets/images/screenshot1.png)
-
-Login Page: 
-![screenshot](./app/assets/images/screenshot2.png)
-
-App Landing Page: 
-![screenshot](./app/assets/images/screenshot3.png)
-
-Player Profile: 
-![screenshot](./app/assets/images/screenshot4.png)
-
-User Profile: 
-![screenshot](./app/assets/images/screenshot6.png) 
-
-About us: 
-![screenshot](./app/assets/images/screenshot5.png) 
+>  A web app that allows the user sign up or log in as a patient and book appointments with a doctor. The app is based in 3 models, User, Role and Appointments. Only an Admin user can create Doctor users, by default users sign up as patients. To book an appointment the patient must send 3 photos to the Doctor to create a 3d image. Built with Ruby on Rails.
 
 Additional description about the project and its features.
 
@@ -73,14 +54,14 @@ Additional description about the project and its features.
 
 ### Usage
 To have this app on your pc, you need to:
-* [download](https://github.com/javitocor/your-snooker-coach/archive/development.zip) or clone this repo:
+* [download](https://github.com/javitocor/doctor-appointments/archive/development.zip) or clone this repo:
   - Clone with SSH:
   ```
-    git@github.com:javitocor/your-snooker-coach.git
+    git@github.com:javitocor/doctor-appointments.git
   ```
   - Clone with HTTPS
   ```
-    https://github.com/javitocor/your-snooker-coach.git
+    https://github.com/javitocor/doctor-appointments.git
   ```
 
 * In the project directory, you can run:
@@ -104,6 +85,11 @@ Populate Database with:
    Log in with email: 'sally@example.com', and password:'aaaaaaaa' to log in as Doctor
    Log in with email: 'jack@example.com', and password:'aaaaaaaa' to log in as Admin
 ```
+Access the page by typing in your web browser
+
+``` bash
+   http://localhost:3000/
+```
 
 ## Future Features
 - Add user locations.
@@ -122,7 +108,7 @@ Populate Database with:
 
 Contributions, issues and feature requests are welcome!
 
-Feel free to check the [issues page](https://github.com/javitocor/your-snooker-coach/issues).
+Feel free to check the [issues page](https://github.com/javitocor/doctor-appointments/issues).
 
 ## Show your support
 
@@ -138,13 +124,13 @@ This project is [MIT](lic.url) licensed.
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/javitocor/your-snooker-coach.svg?style=flat-square
-[contributors-url]: https://github.com/javitocor/your-snooker-coach/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/javitocor/your-snooker-coach.svg?style=flat-square
-[forks-url]: https://github.com/javitocor/your-snooker-coach/network/members
-[stars-shield]: https://img.shields.io/github/stars/javitocor/your-snooker-coach.svg?style=flat-square
-[stars-url]: https://github.com/javitocor/your-snooker-coach/stargazers
-[issues-shield]: https://img.shields.io/github/issues/javitocor/your-snooker-coach.svg?style=flat-square
-[issues-url]: https://github.com/javitocor/your-snooker-coach/issuesover:
+[contributors-shield]: https://img.shields.io/github/contributors/javitocor/doctor-appointments.svg?style=flat-square
+[contributors-url]: https://github.com/javitocor/doctor-appointments/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/javitocor/doctor-appointments.svg?style=flat-square
+[forks-url]: https://github.com/javitocor/doctor-appointments/network/members
+[stars-shield]: https://img.shields.io/github/stars/javitocor/doctor-appointments.svg?style=flat-square
+[stars-url]: https://github.com/javitocor/doctor-appointments/stargazers
+[issues-shield]: https://img.shields.io/github/issues/javitocor/doctor-appointments.svg?style=flat-square
+[issues-url]: https://github.com/javitocor/doctor-appointments/issuesover:
 
 

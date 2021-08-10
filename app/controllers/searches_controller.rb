@@ -1,10 +1,9 @@
 class SearchesController < ApplicationController
   def search
     if params[:search].blank?
-      redirect_to users_index_path
-      # redirect_to users_url
+      redirect_to :back
   else
-      @results = User.search(params[:search])
+      @results = Doctor.search(params[:search])
   end
   end
 end
